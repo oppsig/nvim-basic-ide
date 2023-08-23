@@ -82,3 +82,15 @@ vim.api.nvim_create_autocmd("TermClose", {
   command = "NvimTreeRefresh"
 })
 
+-- toggle nvim-tree when nvim started with no arguments or a folder.
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.fn.argc() == 0 then
+      local api = require("nvim-tree.api")
+      api.tree.toggle({ path = vim.fn.argc() })
+    elseif vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv()[1]) ~= 0 then
+      local api = require("nvim-tree.api")
+      api.tree.toggle()
+    end
+  end
+})
