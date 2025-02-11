@@ -1,6 +1,7 @@
 local M = {
   "nvim-neotest/neotest",
   dependencies = {
+    "nvim-neotest/nvim-nio",
     "nvim-treesitter/nvim-treesitter",
     "nvim-neotest/nvim-nio",
     -- general tests

@@ -1,12 +1,17 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  dependencies = { { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true } },
+  dependencies = {
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+    "nvim-lua/plenary.nvim",
+  },
+  -- lazy = true,
+  cmd = "Telescope",
 }
 
 function M.config()
   local wk = require "which-key"
   wk.add {
-    { "<leader>bb",  "<cmd>Telescope buffers previewer=false<cr>", desc = "Find" },
+    { "<leader>bb", "<cmd>Telescope buffers previewer=false<cr>", desc = "Find" },
     { "<leader>fb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
     { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
     { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
@@ -19,7 +24,6 @@ function M.config()
 
   local icons = require "user.icons"
   local actions = require "telescope.actions"
-
 
   require("telescope").setup {
     defaults = {
